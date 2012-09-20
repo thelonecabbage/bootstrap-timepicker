@@ -63,22 +63,23 @@
                     blur: $.proxy(this.blurElement, this)
                 });
 
+            } 
+            
+            if (this.template) {
+                this.$element.on({
+                    focus: $.proxy(this.showWidget, this),
+                    click: $.proxy(this.showWidget, this),
+                    blur: $.proxy(this.blurElement, this)
+                });
             } else {
-                if (this.template) {
-                    this.$element.on({
-                        focus: $.proxy(this.showWidget, this),
-                        click: $.proxy(this.showWidget, this),
-                        blur: $.proxy(this.blurElement, this)
-                    });
-                } else {
-                    this.$element.on({
-                        focus: $.proxy(this.highlightUnit, this),
-                        click: $.proxy(this.highlightUnit, this),
-                        keypress: $.proxy(this.elementKeypress, this),
-                        blur: $.proxy(this.blurElement, this)
-                    });
-                }
+                this.$element.on({
+                    focus: $.proxy(this.highlightUnit, this),
+                    click: $.proxy(this.highlightUnit, this),
+                    keypress: $.proxy(this.elementKeypress, this),
+                    blur: $.proxy(this.blurElement, this)
+                });
             }
+            
             
 
             this.$widget = $(this.getTemplate()).appendTo('body');
@@ -146,7 +147,7 @@
                 this.$widget.removeClass('open');
             }
             this.open = false;
-            this.$element.trigger('hidden');
+            //this.$element.trigger('hidden');
         }
 
         , widgetClick: function(e) {
