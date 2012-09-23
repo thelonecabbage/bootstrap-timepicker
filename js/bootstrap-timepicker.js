@@ -377,6 +377,10 @@
         }
 
         , setDefaultTime: function(defaultTime){
+            var vtime = this.$element.val();
+            if ($.trim(vtime) !== '') {
+               this.setValues(vtime);
+            } else 
             if (defaultTime) {
                 if (defaultTime === 'current') {
                     var dTime = new Date();
